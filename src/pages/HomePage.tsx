@@ -6,6 +6,8 @@ import { Reveal } from "@/components/common/Reveal";
 import { Seo } from "@/components/common/Seo";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { HOTLINE_TEL } from "@/config/contact";
+import { ENABLE_JOIN } from "@/config/features";
 import {
   homeHero,
   homeStats,
@@ -78,12 +80,21 @@ export function HomePage() {
                 {homeHero.primaryCta}
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
-                to="/join#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-gold/20 bg-brand-paper/5 px-7 py-4 text-sm text-brand-paper transition hover:border-brand-gold/40 hover:bg-brand-paper/10"
-              >
-                {homeHero.secondaryCta}
-              </Link>
+              {ENABLE_JOIN ? (
+                <Link
+                  to="/join#contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-gold/20 bg-brand-paper/5 px-7 py-4 text-sm text-brand-paper transition hover:border-brand-gold/40 hover:bg-brand-paper/10"
+                >
+                  {homeHero.secondaryCta}
+                </Link>
+              ) : (
+                <a
+                  href={`tel:${HOTLINE_TEL}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-gold/20 bg-brand-paper/5 px-7 py-4 text-sm text-brand-paper transition hover:border-brand-gold/40 hover:bg-brand-paper/10"
+                >
+                  {homeHero.secondaryCta}
+                </a>
+              )}
             </div>
             <div className="grid gap-4 pt-6 sm:grid-cols-2 xl:grid-cols-4">
               {homeStats.map((item, index) => (
@@ -138,46 +149,51 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-space bg-brand-sand/45">
-        <div className="container">
-          <SectionHeading
-            eyebrow="Join Opportunity"
-            title="以高端东方草本表达，重构更有成交力的合作场景"
-            description="官网延续复刻站的招商结构，但在仙草甄选的品牌语境中，以轻奢、克制、自然的方式呈现合作价值。"
-          />
-          <div className="mt-12 grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
-            <Reveal className="overflow-hidden rounded-[36px] border border-brand-gold/10 bg-brand-forest p-4 text-brand-paper shadow-[0_20px_60px_rgba(18,34,25,0.18)]">
-              <img
-                src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=luxury%20Chinese%20herbal%20retail%20space%2C%20emerald%20green%20walls%2C%20warm%20gold%20shelves%2C%20premium%20gift%20box%20display%2C%20elegant%20interior%20photography%2C%20realistic&image_size=landscape_4_3"
-                alt="仙草甄选合作空间"
-                className="h-full min-h-[320px] w-full rounded-[28px] object-cover"
-              />
-            </Reveal>
-            <Reveal className="grid gap-5">
-              {[
-                "以东方草本轻奢美学提升终端陈列辨识度",
-                "围绕节令礼赠与企业福利形成高客单场景",
-                "官网、内容和渠道视觉形成统一品牌资产",
-              ].map((item) => (
-                <div key={item} className="rounded-[30px] border border-brand-gold/10 bg-white p-7 shadow-[0_12px_32px_rgba(18,34,25,0.04)]">
-                  <div className="flex items-center gap-3 text-brand-gold">
-                    <Sparkles className="h-5 w-5" />
-                    <span className="text-sm uppercase tracking-[0.25em] text-brand-gold/70">价值亮点</span>
+      {ENABLE_JOIN ? (
+        <section className="section-space bg-brand-sand/45">
+          <div className="container">
+            <SectionHeading
+              eyebrow="Join Opportunity"
+              title="以高端东方草本表达，重构更有成交力的合作场景"
+              description="官网延续复刻站的招商结构，但在仙草甄选的品牌语境中，以轻奢、克制、自然的方式呈现合作价值。"
+            />
+            <div className="mt-12 grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
+              <Reveal className="overflow-hidden rounded-[36px] border border-brand-gold/10 bg-brand-forest p-4 text-brand-paper shadow-[0_20px_60px_rgba(18,34,25,0.18)]">
+                <img
+                  src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=luxury%20Chinese%20herbal%20retail%20space%2C%20emerald%20green%20walls%2C%20warm%20gold%20shelves%2C%20premium%20gift%20box%20display%2C%20elegant%20interior%20photography%2C%20realistic&image_size=landscape_4_3"
+                  alt="仙草甄选合作空间"
+                  className="h-full min-h-[320px] w-full rounded-[28px] object-cover"
+                />
+              </Reveal>
+              <Reveal className="grid gap-5">
+                {[
+                  "以东方草本轻奢美学提升终端陈列辨识度",
+                  "围绕节令礼赠与企业福利形成高客单场景",
+                  "官网、内容和渠道视觉形成统一品牌资产",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[30px] border border-brand-gold/10 bg-white p-7 shadow-[0_12px_32px_rgba(18,34,25,0.04)]"
+                  >
+                    <div className="flex items-center gap-3 text-brand-gold">
+                      <Sparkles className="h-5 w-5" />
+                      <span className="text-sm uppercase tracking-[0.25em] text-brand-gold/70">价值亮点</span>
+                    </div>
+                    <p className="mt-4 text-lg leading-8 text-brand-ink">{item}</p>
                   </div>
-                  <p className="mt-4 text-lg leading-8 text-brand-ink">{item}</p>
-                </div>
-              ))}
-              <Link
-                to="/join"
-                className="inline-flex items-center gap-2 text-sm font-medium text-brand-forest transition hover:gap-3"
-              >
-                查看招商方案
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Reveal>
+                ))}
+                <Link
+                  to="/join"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-brand-forest transition hover:gap-3"
+                >
+                  查看招商方案
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Reveal>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="section-space">
         <div className="container">

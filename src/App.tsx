@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
+import { ENABLE_JOIN } from "@/config/features";
 import { BrandPage } from "@/pages/BrandPage";
 import { HomePage } from "@/pages/HomePage";
 import { JoinPage } from "@/pages/JoinPage";
@@ -25,7 +26,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/brand" element={<BrandPage />} />
-        <Route path="/join" element={<JoinPage />} />
+        {ENABLE_JOIN ? <Route path="/join" element={<JoinPage />} /> : null}
         <Route path="/news" element={<NewsListPage />} />
         <Route path="/news/page/:page" element={<NewsListPage />} />
         <Route path="/news/:slug" element={<NewsDetailPage />} />

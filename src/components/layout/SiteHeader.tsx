@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { HOTLINE_DISPLAY, HOTLINE_TEL } from "@/config/contact";
+import { ENABLE_JOIN } from "@/config/features";
 import headerText from "@/assets/image/headerText.png";
 import { navItems } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -59,12 +60,21 @@ export function SiteHeader() {
             <Phone className="h-4 w-4 text-brand-gold" />
             {HOTLINE_DISPLAY}
           </a>
-          <Link
-            to="/join#contact"
-            className="inline-flex items-center rounded-full bg-brand-forest px-5 py-3 text-sm text-brand-paper transition hover:bg-brand-ink"
-          >
-            招商咨询
-          </Link>
+          {ENABLE_JOIN ? (
+            <Link
+              to="/join#contact"
+              className="inline-flex items-center rounded-full bg-brand-forest px-5 py-3 text-sm text-brand-paper transition hover:bg-brand-ink"
+            >
+              招商咨询
+            </Link>
+          ) : (
+            <a
+              href={`tel:${HOTLINE_TEL}`}
+              className="inline-flex items-center rounded-full bg-brand-forest px-5 py-3 text-sm text-brand-paper transition hover:bg-brand-ink"
+            >
+              联系咨询
+            </a>
+          )}
         </div>
 
         <button

@@ -1,3 +1,5 @@
+import { ENABLE_JOIN } from "@/config/features";
+
 const imageBase = "https://coresg-normal.trae.ai/api/ide/v1/text_to_image";
 
 const makeImage = (prompt: string, imageSize: string) =>
@@ -51,7 +53,7 @@ export interface JoinItem {
 export const navItems: NavItem[] = [
   { label: "首页", enLabel: "HOME", path: "/" },
   { label: "品牌中心", enLabel: "BRAND", path: "/brand" },
-  { label: "招商加盟", enLabel: "JOIN US", path: "/join" },
+  ...(ENABLE_JOIN ? [{ label: "招商加盟", enLabel: "JOIN US", path: "/join" } as const] : []),
   { label: "新闻资讯", enLabel: "NEWS", path: "/news" },
   { label: "产品中心", enLabel: "PRODUCTS", path: "/products" },
 ];
