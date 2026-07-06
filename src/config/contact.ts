@@ -25,7 +25,7 @@ export const HOTLINE_TEL = "4008883696";
 export const WECHAT_ACCOUNT = "XCZX-HERBAL";
 
 /** 商务合作邮箱 */
-export const BIZ_EMAIL = "business@xiancaozhenxuan.com";
+export const BIZ_EMAIL = "business@xiancaozhenxuan.cn";
 
 /** 办公地址 */
 export const BIZ_ADDRESS = "中国·杭州未来产业园 东方本草研究中心";
