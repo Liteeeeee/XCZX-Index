@@ -1,7 +1,7 @@
 import { ArrowUpRight, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import { BIZ_ADDRESS, BIZ_EMAIL, HOTLINE_DISPLAY, HOTLINE_TEL, WECHAT_ACCOUNT } from "@/config/contact";
+import { BIZ_ADDRESS, BIZ_EMAIL, HOTLINE_DISPLAY, HOTLINE_TEL, ICP_RECORD, WECHAT_ACCOUNT } from "@/config/contact";
 import { navItems } from "@/data/site";
 
 export function SiteFooter() {
@@ -53,7 +53,18 @@ export function SiteFooter() {
       <div className="border-t border-brand-gold/10">
         <div className="container flex flex-col gap-3 py-5 text-xs text-brand-paper/45 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 仙草甄选 XIANGCAO SELECT. All rights reserved.</p>
-          <p>本页面为基于复刻 PRD 实现的品牌官网示范站。</p>
+          <div className="flex flex-col gap-2 sm:items-end">
+            {ICP_RECORD ? (
+              <a
+                href="https://beian.miit.gov.cn/"
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-brand-paper"
+              >
+                {ICP_RECORD}
+              </a>
+            ) : null}
+          </div>
         </div>
       </div>
     </footer>
