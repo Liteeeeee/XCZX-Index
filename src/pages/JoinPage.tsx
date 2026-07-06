@@ -5,8 +5,8 @@ import { Reveal } from "@/components/common/Reveal";
 import { Seo } from "@/components/common/Seo";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { BIZ_ADDRESS, BIZ_EMAIL, HOTLINE_DISPLAY, HOTLINE_TEL, WECHAT_ACCOUNT } from "@/config/contact";
 import {
-  contactInfo,
   joinAdvantages,
   joinAnchors,
   joinProcess,
@@ -150,21 +150,21 @@ export function JoinPage() {
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <p className="text-xs uppercase tracking-[0.32em] text-brand-gold/75">招商热线</p>
-                <a href={`tel:${contactInfo.hotline.replace(/-/g, "")}`} className="mt-3 block font-serif-display text-4xl">
-                  {contactInfo.hotline}
+                <a href={`tel:${HOTLINE_TEL}`} className="mt-3 block font-serif-display text-4xl">
+                  {HOTLINE_DISPLAY}
                 </a>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.32em] text-brand-gold/75">商务微信</p>
-                <p className="mt-3 font-serif-display text-3xl">{contactInfo.wechat}</p>
+                <p className="mt-3 font-serif-display text-3xl">{WECHAT_ACCOUNT}</p>
               </div>
             </div>
             <div className="mt-8 border-t border-brand-gold/15 pt-8 text-sm leading-7 text-brand-paper/72">
-              <p>商务邮箱：{contactInfo.email}</p>
-              <p>办公地址：{contactInfo.address}</p>
+              <p>商务邮箱：{BIZ_EMAIL}</p>
+              <p>办公地址：{BIZ_ADDRESS}</p>
             </div>
             <a
-              href={`tel:${contactInfo.hotline.replace(/-/g, "")}`}
+              href={`tel:${HOTLINE_TEL}`}
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-gold px-6 py-3 text-sm font-medium text-brand-forest transition hover:-translate-y-1"
             >
               立即电话沟通

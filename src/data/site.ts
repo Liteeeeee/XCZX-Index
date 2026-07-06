@@ -26,12 +26,14 @@ export interface ProductItem {
 
 export interface NewsItem {
   id: string;
+  backendId?: number;
   slug: string;
   title: string;
   summary: string;
   date: string;
   cover: string;
   content: string[];
+  htmlContent?: string;
 }
 
 export interface TimelineItem {
@@ -54,12 +56,7 @@ export const navItems: NavItem[] = [
   { label: "产品中心", enLabel: "PRODUCTS", path: "/products" },
 ];
 
-export const contactInfo = {
-  hotline: "400-888-3696",
-  wechat: "XCZX-HERBAL",
-  email: "business@xiancaozhenxuan.com",
-  address: "中国·杭州未来产业园 东方本草研究中心",
-};
+// 联系方式已统一提取至 @/config/contact，请从该文件直接导入
 
 export const homeHero = {
   eyebrow: "ORIENTAL HERBAL LIFESTYLE",

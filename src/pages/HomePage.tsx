@@ -1,4 +1,5 @@
 import { ArrowRight, Leaf, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Reveal } from "@/components/common/Reveal";
@@ -6,14 +7,53 @@ import { Seo } from "@/components/common/Seo";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { MainLayout } from "@/components/layout/MainLayout";
 import {
-  featuredNews,
-  featuredProducts,
   homeHero,
   homeStats,
   standards,
 } from "@/data/site";
+import {
+  fallbackHomeNews,
+  fallbackHomeProducts,
+  fetchFeaturedWebsiteArticles,
+  fetchFeaturedWebsiteProducts,
+  getNewsHref,
+} from "@/data/websiteApi";
+
+const shouldHydrateFromApi = import.meta.env.MODE !== "test";
 
 export function HomePage() {
+  const [featuredNews, setFeaturedNews] = useState(fallbackHomeNews);
+  const [featuredProducts, setFeaturedProducts] = useState(fallbackHomeProducts);
+
+  useEffect(() => {
+    if (!shouldHydrateFromApi) {
+      return;
+    }
+
+    let disposed = false;
+
+    void Promise.all([
+      fetchFeaturedWebsiteArticles(),
+      fetchFeaturedWebsiteProducts(),
+    ]).then(([news, products]) => {
+      if (disposed) {
+        return;
+      }
+
+      if (news.length > 0) {
+        setFeaturedNews(news);
+      }
+
+      if (products.length > 0) {
+        setFeaturedProducts(products);
+      }
+    });
+
+    return () => {
+      disposed = true;
+    };
+  }, []);
+
   return (
     <MainLayout>
       <Seo title="首页" />
@@ -188,43 +228,45 @@ export function HomePage() {
             title="用内容建立品牌信任，用资讯承接合作与传播"
             description="新闻与内容模块保留原复刻站的结构逻辑，并替换为更适配仙草甄选品牌语气的叙事内容。"
           />
-          <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <Reveal className="overflow-hidden rounded-[32px] border border-brand-gold/10 bg-white p-4 shadow-[0_16px_40px_rgba(18,34,25,0.06)]">
-              <img src={featuredNews[0].cover} alt={featuredNews[0].title} className="h-[320px] w-full rounded-[26px] object-cover" />
-              <div className="px-2 pb-2 pt-6">
-                <p className="text-xs uppercase tracking-[0.32em] text-brand-gold/75">{featuredNews[0].date}</p>
-                <h3 className="mt-4 font-serif-display text-3xl leading-snug text-brand-ink">{featuredNews[0].title}</h3>
-                <p className="mt-4 text-sm leading-7 text-brand-muted">{featuredNews[0].summary}</p>
-                <Link to={`/news/${featuredNews[0].slug}`} className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-forest">
-                  阅读详情
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </Reveal>
+          {featuredNews[0] ? (
+            <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <Reveal className="overflow-hidden rounded-[32px] border border-brand-gold/10 bg-white p-4 shadow-[0_16px_40px_rgba(18,34,25,0.06)]">
+                <img src={featuredNews[0].cover} alt={featuredNews[0].title} className="h-[320px] w-full rounded-[26px] object-cover" />
+                <div className="px-2 pb-2 pt-6">
+                  <p className="text-xs uppercase tracking-[0.32em] text-brand-gold/75">{featuredNews[0].date}</p>
+                  <h3 className="mt-4 font-serif-display text-3xl leading-snug text-brand-ink">{featuredNews[0].title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-brand-muted">{featuredNews[0].summary}</p>
+                  <Link to={getNewsHref(featuredNews[0])} className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-forest">
+                    阅读详情
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </Reveal>
 
-            <div className="grid gap-5">
-              {featuredNews.slice(1).map((item, index) => (
-                <Reveal
-                  key={item.id}
-                  delay={0.08 * index}
-                  className="grid gap-4 rounded-[30px] border border-brand-gold/10 bg-white p-4 shadow-[0_14px_36px_rgba(18,34,25,0.05)] sm:grid-cols-[180px_1fr]"
-                >
-                  <img src={item.cover} alt={item.title} className="h-full min-h-[180px] w-full rounded-[22px] object-cover" />
-                  <div className="flex flex-col justify-between gap-5">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-brand-gold/75">{item.date}</p>
-                      <h3 className="mt-3 text-xl font-medium leading-8 text-brand-ink">{item.title}</h3>
-                      <p className="mt-3 text-sm leading-7 text-brand-muted">{item.summary}</p>
+              <div className="grid gap-5">
+                {featuredNews.slice(1).map((item, index) => (
+                  <Reveal
+                    key={item.id}
+                    delay={0.08 * index}
+                    className="grid gap-4 rounded-[30px] border border-brand-gold/10 bg-white p-4 shadow-[0_14px_36px_rgba(18,34,25,0.05)] sm:grid-cols-[180px_1fr]"
+                  >
+                    <img src={item.cover} alt={item.title} className="h-full min-h-[180px] w-full rounded-[22px] object-cover" />
+                    <div className="flex flex-col justify-between gap-5">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.3em] text-brand-gold/75">{item.date}</p>
+                        <h3 className="mt-3 text-xl font-medium leading-8 text-brand-ink">{item.title}</h3>
+                        <p className="mt-3 text-sm leading-7 text-brand-muted">{item.summary}</p>
+                      </div>
+                      <Link to={getNewsHref(item)} className="inline-flex items-center gap-2 text-sm font-medium text-brand-forest">
+                        继续阅读
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
                     </div>
-                    <Link to={`/news/${item.slug}`} className="inline-flex items-center gap-2 text-sm font-medium text-brand-forest">
-                      继续阅读
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
       </section>
     </MainLayout>

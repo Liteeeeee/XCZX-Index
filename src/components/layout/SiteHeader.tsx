@@ -2,7 +2,9 @@ import { Menu, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import { contactInfo, navItems } from "@/data/site";
+import { HOTLINE_DISPLAY, HOTLINE_TEL } from "@/config/contact";
+import headerText from "@/assets/image/headerText.png";
+import { navItems } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { useUiStore } from "@/store/useUiStore";
 
@@ -28,8 +30,8 @@ export function SiteHeader() {
     >
       <div className="container flex h-20 items-center justify-between gap-4">
         <Link to="/" className="shrink-0">
-          <p className="font-serif-display text-2xl text-brand-ink">仙草甄选</p>
-          <p className="mt-1 text-[10px] uppercase tracking-[0.45em] text-brand-gold/75">XIANGCAO SELECT</p>
+          <img src={headerText} alt="仙草甄选" className="block h-10 w-auto" />
+          <span className="sr-only">仙草甄选</span>
         </Link>
 
         <nav className="hidden items-center gap-2 lg:flex">
@@ -51,11 +53,11 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href={`tel:${contactInfo.hotline.replace(/-/g, "")}`}
+            href={`tel:${HOTLINE_TEL}`}
             className="inline-flex items-center gap-2 rounded-full border border-brand-gold/15 px-4 py-2 text-sm text-brand-ink transition hover:border-brand-gold/40 hover:bg-brand-gold/10"
           >
             <Phone className="h-4 w-4 text-brand-gold" />
-            {contactInfo.hotline}
+            {HOTLINE_DISPLAY}
           </a>
           <Link
             to="/join#contact"

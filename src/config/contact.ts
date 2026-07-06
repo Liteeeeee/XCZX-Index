@@ -1,0 +1,37 @@
+// ============================================
+// 品牌基本信息与联系方式配置文件
+// 修改此文件即可统一更新全站联系信息与品牌名称
+// ============================================
+
+/** 品牌中文全称 */
+export const BRAND_NAME = "仙草甄选";
+
+/** 品牌英文名称 */
+export const BRAND_NAME_EN = "XIANGCAO SELECT";
+
+/** 品牌 Slogan / 副标题（英文） */
+export const BRAND_TAGLINE = "Oriental Herbal Luxury";
+
+/** 品牌 Slogan / 副标题（中文） */
+export const BRAND_TAGLINE_CN = "东方草本轻奢";
+
+/** 客服热线（带分隔符，用于页面展示） */
+export const HOTLINE_DISPLAY = "400-888-3696";
+
+/** 客服热线（纯数字，用于 tel: 链接） */
+export const HOTLINE_TEL = "4008883696";
+
+/** 微信客服 / 顾问账号 */
+export const WECHAT_ACCOUNT = "XCZX-HERBAL";
+
+/** 商务合作邮箱 */
+export const BIZ_EMAIL = "business@xiancaozhenxuan.com";
+
+/** 办公地址 */
+export const BIZ_ADDRESS = "中国·杭州未来产业园 东方本草研究中心";
+
+/** 页脚版权起始年份 */
+export const COPYRIGHT_YEAR = "2026";
+
+/** ICP 备案号（有则填写，为空不展示） */
+export const ICP_RECORD = "";

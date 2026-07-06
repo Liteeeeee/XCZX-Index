@@ -1,7 +1,8 @@
 import { X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
-import { contactInfo, navItems } from "@/data/site";
+import { BIZ_ADDRESS, HOTLINE_DISPLAY, HOTLINE_TEL } from "@/config/contact";
+import { navItems } from "@/data/site";
 import { useUiStore } from "@/store/useUiStore";
 
 export function MobileDrawer() {
@@ -57,10 +58,10 @@ export function MobileDrawer() {
 
         <div className="mt-10 rounded-[28px] border border-brand-gold/15 bg-brand-forest px-5 py-6 text-brand-paper">
           <p className="text-xs uppercase tracking-[0.3em] text-brand-gold/75">Consulting</p>
-          <a className="mt-4 block font-serif-display text-2xl" href={`tel:${contactInfo.hotline.replace(/-/g, "")}`}>
-            {contactInfo.hotline}
+          <a className="mt-4 block font-serif-display text-2xl" href={`tel:${HOTLINE_TEL}`}>
+            {HOTLINE_DISPLAY}
           </a>
-          <p className="mt-4 text-sm leading-7 text-brand-paper/70">{contactInfo.address}</p>
+          <p className="mt-4 text-sm leading-7 text-brand-paper/70">{BIZ_ADDRESS}</p>
         </div>
       </aside>
     </div>
