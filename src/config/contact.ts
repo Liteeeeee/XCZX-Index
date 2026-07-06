@@ -28,7 +28,7 @@ export const WECHAT_ACCOUNT = "XCZX-HERBAL";
 export const BIZ_EMAIL = "business@xiancaozhenxuan.cn";
 
 /** 办公地址 */
-export const BIZ_ADDRESS = "中国·杭州未来产业园 东方本草研究中心";
+export const BIZ_ADDRESS = "北京市朝阳区东三环北路丙2号20层23B08";
 
 /** 页脚版权起始年份 */
 export const COPYRIGHT_YEAR = "2026";
