@@ -6,6 +6,7 @@ import { Reveal } from "@/components/common/Reveal";
 import { Seo } from "@/components/common/Seo";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { MainLayout } from "@/components/layout/MainLayout";
+import rootBanneer from "@/assets/image/rootBanneer.png";
 import { HOTLINE_TEL } from "@/config/contact";
 import { ENABLE_JOIN } from "@/config/features";
 import {
@@ -115,7 +116,7 @@ export function HomePage() {
             <div className="absolute -right-4 bottom-10 hidden h-28 w-28 rounded-full bg-brand-gold/15 blur-3xl lg:block" />
             <div className="overflow-hidden rounded-[36px] border border-brand-gold/15 bg-brand-paper/5 p-4 shadow-[0_30px_90px_rgba(11,22,14,0.35)] backdrop-blur">
               <img
-                src={homeHero.image}
+                src={rootBanneer}
                 alt="仙草甄选品牌主视觉"
                 className="h-[520px] w-full rounded-[28px] object-cover"
               />
