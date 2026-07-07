@@ -16,10 +16,10 @@ export const BRAND_TAGLINE = "Oriental Herbal Luxury";
 export const BRAND_TAGLINE_CN = "东方草本轻奢";
 
 /** 客服热线（带分隔符，用于页面展示） */
-export const HOTLINE_DISPLAY = "400-888-3696";
+export const HOTLINE_DISPLAY = "400-851-8802";
 
 /** 客服热线（纯数字，用于 tel: 链接） */
-export const HOTLINE_TEL = "4008883696";
+export const HOTLINE_TEL = "4008518802";
 
 /** 微信客服 / 顾问账号 */
 export const WECHAT_ACCOUNT = "XCZX-HERBAL";
