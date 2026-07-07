@@ -1,4 +1,4 @@
-import { ArrowUp, MessageCircleMore, PhoneCall } from "lucide-react";
+import { ArrowUp, PhoneCall } from "lucide-react";
 
 import { HOTLINE_TEL } from "@/config/contact";
 
