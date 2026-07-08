@@ -13,6 +13,7 @@ import {
   type ProductItem,
 } from "@/data/site";
 
+// const TEST_BASE_URL = "https://admin.xiancaozhenxuan.cn/admin-api/";
 const TEST_BASE_URL = "https://server.api.xiancaozhenxuan.cn/admin-api/";
 const PROD_BASE_URL = "https://admin.xiancaozhenxuan.cn/admin-api/";
 const DEFAULT_TENANT_ID = "1";
@@ -36,8 +37,8 @@ interface WebsiteArticleResponse {
   picUrl?: string | null;
   bannerPicUrl?: string | null;
   content?: string | null;
-  publishTime?: number | null;
-  createTime?: number | null;
+  publishTime?: string | null;
+  createTime?: string | null;
 }
 
 interface WebsiteProductPropertyResponse {
@@ -90,8 +91,34 @@ const toQueryString = (params: Record<string, string | number | boolean | undefi
   return query ? `?${query}` : "";
 };
 
-const formatDate = (timestamp?: number | null) => {
-  if (!timestamp) {
+const formatDate = (raw?: string | number | null) => {
+  if (!raw) {
+    return "";
+  }
+
+  let date: Date | undefined;
+
+  if (typeof raw === "number") {
+    date = new Date(raw);
+  } else {
+    const trimmed = raw.trim();
+
+    if (!trimmed) {
+      return "";
+    }
+
+    if (/^\d+$/.test(trimmed)) {
+      const numeric = Number(trimmed);
+      const normalized = trimmed.length <= 10 ? numeric * 1000 : numeric;
+      date = new Date(normalized);
+    } else {
+      const normalized = trimmed.replace(" ", "T");
+      const parsed = Date.parse(normalized);
+      date = Number.isNaN(parsed) ? undefined : new Date(parsed);
+    }
+  }
+
+  if (!date || Number.isNaN(date.getTime())) {
     return "";
   }
 
@@ -100,7 +127,7 @@ const formatDate = (timestamp?: number | null) => {
     month: "2-digit",
     day: "2-digit",
   })
-    .format(timestamp)
+    .format(date)
     .replace(/\//g, "-");
 };
 

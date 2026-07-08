@@ -1,23 +1,19 @@
-import "@testing-library/jest-dom";
-import { vi } from "vitest";
+import "@testing-library/jest-dom/vitest";
+import { cleanup } from "@testing-library/react";
+import { afterEach } from "vitest";
 
-Object.defineProperty(window, "scrollTo", {
-  writable: true,
-  value: vi.fn(),
-});
-
-class MockIntersectionObserver {
-  observe = vi.fn();
-  unobserve = vi.fn();
-  disconnect = vi.fn();
+class IntersectionObserverMock {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
 }
-
-Object.defineProperty(window, "IntersectionObserver", {
-  writable: true,
-  value: MockIntersectionObserver,
-});
 
 Object.defineProperty(globalThis, "IntersectionObserver", {
   writable: true,
-  value: MockIntersectionObserver,
+  configurable: true,
+  value: IntersectionObserverMock,
+});
+
+afterEach(() => {
+  cleanup();
 });
