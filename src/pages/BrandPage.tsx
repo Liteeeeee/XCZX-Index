@@ -5,7 +5,7 @@ import { Reveal } from "@/components/common/Reveal";
 import { Seo } from "@/components/common/Seo";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { brandHighlights, brandValues, standards, timeline } from "@/data/site";
+import { brandHighlights, brandValues, standards} from "@/data/site";
 
 const icons = [Sparkles, ShieldCheck, Sprout];
 
@@ -15,8 +15,8 @@ export function BrandPage() {
       <Seo title="品牌中心" />
       <PageHero
         eyebrow="Brand Center"
-        title="让草本品牌拥有更高识别度的当代表达"
-        description="仙草甄选以东方本草为精神内核，在产品、内容、礼赠与空间中构建统一的品牌感知。"
+        title="我们相信，真正的健康，是与自然温柔相待。"
+        description="循四时之序，应天地之气，这是中式养生延续千年的从容智慧。我们走遍山川田野，寻一味道地仙草，承袭东方食养的千年智慧。以现代科技激发草本的内蕴，以严苛标准传递每一口安心的承诺。让中药文化不再是典籍里的遥远回声，而是日常里触手可及的温暖陪伴。"
       />
 
       <section className="section-space">
@@ -45,8 +45,8 @@ export function BrandPage() {
         <div className="container grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <SectionHeading
             eyebrow="Selection System"
-            title="以原料、工艺、体验三重维度建立品牌标准"
-            description="品牌中心页承接复刻站中的“企业简介”与“品质背书”功能，但内容表达全面转为仙草甄选的东方草本语言。"
+            title="四重甄选准则，一以贯之的承诺"
+            description="道地可溯 · 科学可证 · 工艺可考 · 体验可感"
           />
           <div className="grid gap-5 md:grid-cols-2">
             {standards.map((item, index) => (
@@ -68,14 +68,14 @@ export function BrandPage() {
         <div className="container">
           <SectionHeading
             eyebrow="Brand Highlights"
-            title="用数据与背书强化品牌成长的真实感"
-            description="品牌页通过数据卡、合作模块与时间轴展示品牌持续成长的能力，让官网不仅美观，也具有可信度。"
+            title="从愿景到标准，从标准到现实"
+            description="仙草甄选正在将健康哲学转化为可交付的品质实践"
           />
           <div className="mt-12 grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
             <Reveal className="grid gap-5">
               {brandHighlights.map((item, index) => (
                 <div key={item.label} className="rounded-[30px] border border-brand-gold/10 bg-brand-forest p-8 text-brand-paper shadow-[0_20px_48px_rgba(18,34,25,0.14)]">
-                  <p className="font-serif-display text-5xl text-brand-gold">{item.value}</p>
+                  <p className="font-serif-display text-4xl text-brand-gold">{item.value}</p>
                   <p className="mt-4 text-sm tracking-[0.05em] text-brand-paper/72">{item.label}</p>
                   {index === 0 ? (
                     <p className="mt-4 text-sm leading-7 text-brand-paper/68">
@@ -97,7 +97,7 @@ export function BrandPage() {
         </div>
       </section>
 
-      <section className="section-space bg-brand-sand/45">
+      {/* <section className="section-space bg-brand-sand/45">
         <div className="container">
           <SectionHeading
             eyebrow="Timeline"
@@ -120,7 +120,7 @@ export function BrandPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </MainLayout>
   );
 }

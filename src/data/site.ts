@@ -62,9 +62,9 @@ export const navItems: NavItem[] = [
 
 export const homeHero = {
   eyebrow: "ORIENTAL HERBAL LIFESTYLE",
-  title: "仙草甄选，重塑东方草本滋养的当代表达",
+  title: "以仙草为底蕴，以甄选铸平台。",
   description:
-    "以东方本草配伍灵感、现代轻养理念与礼赠级审美，构建一套兼具品牌格调、产品价值与合作转化的草本滋养官网。",
+    "厚植中药文化的千年智慧，构筑东方食养的可信阵地——仙草甄选，让中式养生，走进更多人的日常。",
   primaryCta: "探索品牌",
   secondaryCta: "咨询合作",
   image: makeImage(
@@ -74,32 +74,32 @@ export const homeHero = {
 };
 
 export const homeStats: StatItem[] = [
-  { value: "12+", label: "甄选草本产地直采" },
-  { value: "8 大", label: "核心品质甄选标准" },
-  { value: "300+", label: "合作渠道覆盖城市" },
-  { value: "24H", label: "商务咨询快速响应" },
+  { value: "四", label: "大产品品类" },
+  { value: "1000", label: "m²直播基地" },
+  { value: "6000", label: "+种草矩阵" },
+  { value: "30000", label: "+终端链接" },
 ];
 
 export const standards: JoinItem[] = [
   {
     id: "origin",
-    title: "原料甄选",
-    description: "围绕本草来源、产区稳定性、季节采收与成分表现，建立可追溯的甄选模型。",
+    title: "道地溯源，真材实料",
+    description: "每一味原料，皆有清晰的地理坐标与生长履历。",
   },
   {
     id: "formula",
-    title: "配方逻辑",
-    description: "以现代轻养需求为线索，重构传统本草组合，让口感、节奏与场景更适合当代用户。",
+    title: "科学验证，安全可循",
+    description: "每一份功效，皆有科学依据与安全背书。",
   },
   {
     id: "craft",
-    title: "工艺呈现",
-    description: "强调低负担与高质感并重，从稳定性、留香度到风味层次全面打磨产品体验。",
+    title: "工艺考究，品控严明",
+    description: "每一道工序，皆有精细标准与质量把关。",
   },
   {
     id: "quality",
-    title: "品控体系",
-    description: "通过内部批次复核、质检标准与渠道反馈机制，形成持续优化的产品闭环。",
+    title: "设计至简，体验至善",
+    description: "每一处细节，皆有用户关怀与审美考量。",
   },
 ];
 
@@ -107,24 +107,25 @@ export const brandValues: JoinItem[] = [
   {
     id: "vision",
     title: "品牌愿景",
-    description: "让东方草本从传统滋补叙事中走出来，进入更年轻、更高频、更审美化的生活方式场景。",
+    description: "致力推动东方食养的健康哲学，让道地草本融入民生日常，成为一种可触可感、从容自在的生活方式。",
   },
   {
     id: "people",
-    title: "目标人群",
-    description: "聚焦关注身心平衡、礼赠质感、日常轻养和精致生活方式的城市消费人群。",
+    title: "品牌承诺",
+    description: "甄选好仙草，健康更放心。用户的健康，是最高准则。严苛审鉴，透明溯源，护佑安心。",
   },
   {
     id: "promise",
-    title: "品牌承诺",
-    description: "坚持看得见的原料、讲得清的逻辑、感受得到的体验，建立长期可信赖的品牌关系。",
+    title: "产品定位",
+    description: "东方草本为根，现代科技为翼。千年食养智慧，化作日常轻养生的温柔陪伴。",
   },
 ];
 
 export const brandHighlights: StatItem[] = [
-  { value: "7", label: "条草本产品线规划" },
-  { value: "20+", label: "场景化礼盒方案" },
-  { value: "10W+", label: "线上品牌内容触达" },
+  { value: "自研小程序", label: "四大产品品类，药食同源，健康日化，健康食品，仙草文创，丰富的产品矩阵，带来更优质的健康服务。" },
+  { value: "1000m²仓储式直播基地", label: "集直播空间、仓储管理、订单履约、物流配送于一体，实现“前播后仓、即播即发”的高效协同。" },
+  { value: "6000+种草账号", label: "聚焦抖音输出中医养生、体质调养食疗科普等专业干货，让中式养生，成为更多国人的健康之选。" },
+  { value: "30000+线下诊所/药店", label: "上万量级的线下渠道连结，让我们的产品能够便捷抵达更多用户手中。院中店模式携手药食坊，将线下门店开进三甲医院。更高规格的健康认可，更直观的实体感受。" },
 ];
 
 export const timeline: TimelineItem[] = [
