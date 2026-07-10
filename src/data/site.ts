@@ -61,7 +61,7 @@ export const navItems: NavItem[] = [
 // 联系方式已统一提取至 @/config/contact，请从该文件直接导入
 
 export const homeHero = {
-  eyebrow: "ORIENTAL HERBAL LIFESTYLE",
+  eyebrow: "Natural Herb Selection",
   title: "以仙草为底蕴，以甄选铸平台。",
   description:
     "厚植中药文化的千年智慧，构筑东方食养的可信阵地——仙草甄选，让中式养生，走进更多人的日常。",

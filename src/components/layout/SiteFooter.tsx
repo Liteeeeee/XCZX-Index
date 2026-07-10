@@ -9,10 +9,9 @@ export function SiteFooter() {
     <footer className="border-t border-brand-gold/10 bg-brand-forest text-brand-paper">
       <div className="container grid gap-10 py-16 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div className="space-y-5">
-          <p className="text-xs uppercase tracking-[0.4em] text-brand-gold/75">Oriental Herbal Luxury</p>
-          <h2 className="font-serif-display text-4xl leading-tight">为东方草本滋养，建立更高级的品牌表达。</h2>
-          <p className="max-w-xl text-sm leading-7 text-brand-paper/72">
-            仙草甄选聚焦本草轻养、品质礼赠与渠道合作，以当代审美重构东方草本的生活方式价值。
+          <p className="text-xs uppercase tracking-[0.4em] text-brand-gold/75">Natural Herb Selection</p>
+          <h2 className="font-serif-display text-4xl leading-tight">甄选好仙草，健康更放心</h2>
+          <p className="max-w-xl text-sm leading-7 text-brand-paper/72">中式养生典范，一站式甄选平台
           </p>
           <a
             href={`tel:${HOTLINE_TEL}`}

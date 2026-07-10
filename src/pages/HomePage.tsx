@@ -129,8 +129,8 @@ export function HomePage() {
         <div className="container grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <SectionHeading
             eyebrow="Brand Story"
-            title="从东方草本中提炼当代礼赠与轻养的品牌秩序"
-            description="仙草甄选不是对传统滋补的简单复述，而是通过原料甄选、产品结构与审美系统，重建更适合今天用户的草本生活方式。"
+            title="甄选好仙草，健康更放心"
+            description="承袭东方食养的千年智慧，以科技焕发草本底蕴，用品质构筑值得托付的健康平台。"
           />
           <div className="grid gap-5 sm:grid-cols-2">
             {standards.map((item, index) => (
@@ -200,8 +200,8 @@ export function HomePage() {
         <div className="container">
           <SectionHeading
             eyebrow="Featured Products"
-            title="以礼赠、轻饮与日常轻养三条线建立产品识别"
-            description="通过高质感产品卡、成分标签与应用场景描述，让产品页面兼具品牌表达与转化能力。"
+            title="自研·甄选 四大品类"
+            description="让中式养生的智慧，化作触手可及的日常陪伴。"
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {featuredProducts.map((product, index) => (
@@ -242,8 +242,8 @@ export function HomePage() {
         <div className="container">
           <SectionHeading
             eyebrow="Featured News"
-            title="用内容建立品牌信任，用资讯承接合作与传播"
-            description="新闻与内容模块保留原复刻站的结构逻辑，并替换为更适配仙草甄选品牌语气的叙事内容。"
+            title="仙草甄选·新闻资讯"
+            description="品质铸就信任，时光见证成长，不负每一份信任。"
           />
           {featuredNews[0] ? (
             <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">

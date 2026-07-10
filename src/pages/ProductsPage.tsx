@@ -51,8 +51,8 @@ export function ProductsPage() {
       <Seo title="产品中心" />
       <PageHero
         eyebrow="Products"
-        title="在礼赠、轻饮与节令场景中建立高辨识度产品矩阵"
-        description="产品中心页保留复刻站的网格与分页形式，同时加入草本卖点标签、成分气质与更现代的商品表达。"
+        title="自研·甄选，品质好物"
+        description="让中式养生，触手可及"
       />
 
       <section className="section-space">
@@ -60,7 +60,7 @@ export function ProductsPage() {
           <SectionHeading
             eyebrow={`Page 0${pageData.currentPage}`}
             title="仙草甄选产品中心"
-            description="当前页面展示品牌核心产品卡片，适合承接详情、社媒传播与招商资料引用。"
+            description="品质，是我们唯一的语言。"
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {isLoading

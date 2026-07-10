@@ -62,16 +62,16 @@ export function NewsListPage() {
       <Seo title="新闻资讯" />
       <PageHero
         eyebrow="News & Journal"
-        title="用资讯承接品牌表达、合作传播与内容运营"
-        description="新闻资讯页延续复刻站的列表与详情结构，用于展示品牌动态、行业洞察与合作内容。"
+        title="品牌动态 · 行业观察 · 食养分享"
+        description="记录仙草甄选在中式养生之路上的每一次探索与成长。"
       />
 
       <section className="section-space">
         <div className="container">
           <SectionHeading
             eyebrow="Featured Story"
-            title="焦点内容优先承接品牌认知"
-            description="列表页顶部保留主推文章区域，通过大图与摘要强化阅读入口。"
+            title="最新动态"
+            description="每一步都是一次跨越"
           />
           {isLoading ? (
             <div className="mt-12 grid gap-6 overflow-hidden rounded-[36px] border border-brand-gold/10 bg-white p-4 shadow-[0_18px_44px_rgba(18,34,25,0.06)] lg:grid-cols-[0.9fr_1.1fr]">
