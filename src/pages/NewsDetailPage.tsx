@@ -115,7 +115,7 @@ export function NewsDetailPage() {
                 <h1 className="mt-5 font-serif-display text-4xl leading-tight text-brand-ink">{article.title}</h1>
                 {article.htmlContent ? (
                   <div
-                    className="mt-8 space-y-6 text-base leading-9 text-brand-muted [&_img]:rounded-[24px] [&_img]:max-w-full"
+                    className="mt-8 text-base leading-9 text-brand-muted [&_em]:text-brand-ink [&_hr]:my-8 [&_hr]:border-brand-gold/15 [&_img]:mx-auto [&_img]:my-6 [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-[24px] [&_img]:object-contain [&_p]:my-4 [&_span]:text-inherit [&_strong]:text-brand-ink"
                     dangerouslySetInnerHTML={{ __html: article.htmlContent }}
                   />
                 ) : (

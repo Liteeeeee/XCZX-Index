@@ -13,8 +13,8 @@ import {
   type ProductItem,
 } from "@/data/site";
 
-// const TEST_BASE_URL = "https://admin.xiancaozhenxuan.cn/admin-api/";
-const TEST_BASE_URL = "https://server.api.xiancaozhenxuan.cn/admin-api/";
+const TEST_BASE_URL = "https://admin.xiancaozhenxuan.cn/admin-api/";
+// const TEST_BASE_URL = "https://server.api.xiancaozhenxuan.cn/admin-api/";
 const PROD_BASE_URL = "https://admin.xiancaozhenxuan.cn/admin-api/";
 const DEFAULT_TENANT_ID = "1";
 const PRODUCT_PAGE_SIZE = 4;
@@ -138,6 +138,45 @@ const stripHtml = (html?: string | null) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const normalizeRichTextUrl = (value: string) => {
+  const normalized = value.replace(/`/g, "").trim();
+
+  if (!normalized || /^file:/i.test(normalized) || /^javascript:/i.test(normalized)) {
+    return "";
+  }
+
+  return normalized;
+};
+
+export const normalizeArticleHtml = (html?: string | null) => {
+  if (!html) {
+    return undefined;
+  }
+
+  const normalized = html
+    .replace(/\r\n?/g, "\n")
+    .replace(/<img\b[^>]*>/gi, (tag) => {
+      let shouldDropImage = false;
+
+      const nextTag = tag.replace(/\b(src|data-href)=("([^"]*)"|'([^']*)')/gi, (_, attr: string, _quotedValue, doubleQuotedValue: string | undefined, singleQuotedValue: string | undefined) => {
+        const rawValue = doubleQuotedValue ?? singleQuotedValue ?? "";
+        const cleanValue = normalizeRichTextUrl(rawValue);
+
+        if (attr.toLowerCase() === "src" && !cleanValue) {
+          shouldDropImage = true;
+          return "";
+        }
+
+        return `${attr}="${cleanValue}"`;
+      });
+
+      return shouldDropImage ? "" : nextTag;
+    })
+    .replace(/<p>\s*(?:<br\s*\/?>|&nbsp;|\s)*<\/p>/gi, "");
+
+  return normalized.trim() || undefined;
+};
+
 const buildArticleSlug = (id: number, title: string) => {
   const normalized = title
     .toLowerCase()
@@ -174,20 +213,24 @@ const extractProductTags = (item: WebsiteProductResponse) => {
   return Array.from(tags).slice(0, 4);
 };
 
-const mapArticle = (item: WebsiteArticleResponse): NewsItem => ({
-  id: String(item.id),
-  backendId: item.id,
-  slug: buildArticleSlug(item.id, item.title),
-  title: item.title,
-  summary: item.introduction?.trim() || stripHtml(item.content) || "暂无摘要",
-  date: formatDate(item.publishTime ?? item.createTime),
-  cover: item.bannerPicUrl || item.picUrl || "",
-  content: stripHtml(item.content)
-    .split(/(?<=[。！？])/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean),
-  htmlContent: item.content || undefined,
-});
+const mapArticle = (item: WebsiteArticleResponse): NewsItem => {
+  const normalizedHtml = normalizeArticleHtml(item.content);
+
+  return {
+    id: String(item.id),
+    backendId: item.id,
+    slug: buildArticleSlug(item.id, item.title),
+    title: item.title,
+    summary: item.introduction?.trim() || stripHtml(normalizedHtml) || "暂无摘要",
+    date: formatDate(item.publishTime ?? item.createTime),
+    cover: item.bannerPicUrl || item.picUrl || "",
+    content: stripHtml(normalizedHtml)
+      .split(/(?<=[。！？])/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean),
+    htmlContent: normalizedHtml,
+  };
+};
 
 const mapProduct = (item: WebsiteProductResponse, page: number): ProductItem => ({
   id: String(item.id),
