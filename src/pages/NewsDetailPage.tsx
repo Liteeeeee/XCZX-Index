@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { PageHero } from "@/components/common/PageHero";
-import { Reveal } from "@/components/common/Reveal";
 import { Seo } from "@/components/common/Seo";
 import { Skeleton } from "@/components/common/Skeleton";
 import { MainLayout } from "@/components/layout/MainLayout";
@@ -108,7 +107,7 @@ export function NewsDetailPage() {
               </div>
             </div>
           ) : (
-            <Reveal className="rounded-[36px] border border-brand-gold/10 bg-white p-5 shadow-[0_18px_44px_rgba(18,34,25,0.06)] sm:p-8">
+            <div className="rounded-[36px] border border-brand-gold/10 bg-white p-5 shadow-[0_18px_44px_rgba(18,34,25,0.06)] sm:p-8">
               <img src={article.cover} alt={article.title} className="h-[360px] w-full rounded-[28px] object-cover" />
               <div className="mx-auto mt-8 max-w-3xl">
                 <p className="text-xs uppercase tracking-[0.32em] text-brand-gold/75">{article.date}</p>
@@ -140,7 +139,7 @@ export function NewsDetailPage() {
                   ) : null}
                 </div>
               </div>
-            </Reveal>
+            </div>
           )}
         </div>
       </section>
