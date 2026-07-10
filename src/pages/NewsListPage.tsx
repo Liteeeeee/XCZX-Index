@@ -62,7 +62,7 @@ export function NewsListPage() {
       <Seo title="新闻资讯" />
       <PageHero
         eyebrow="News & Journal"
-        title="品牌动态 · 行业观察 · 食养分享"
+        title="品牌动态"
         description="记录仙草甄选在中式养生之路上的每一次探索与成长。"
       />
 
