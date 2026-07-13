@@ -202,14 +202,6 @@ const extractProductTags = (item: WebsiteProductResponse) => {
 
   rawTags.forEach((tag) => tags.add(tag));
 
-  item.skus?.forEach((sku) => {
-    sku.properties?.forEach((property) => {
-      if (property.valueName) {
-        tags.add(property.valueName);
-      }
-    });
-  });
-
   return Array.from(tags).slice(0, 4);
 };
 
