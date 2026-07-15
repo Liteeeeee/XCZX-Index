@@ -97,15 +97,15 @@ export function HomePage() {
                 </a>
               )}
             </div>
-            <div className="grid gap-4 pt-6 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 pt-6 sm:grid-cols-2 xl:gap-6 xl:pt-8 2xl:grid-cols-4">
               {homeStats.map((item, index) => (
                 <Reveal
                   key={item.label}
                   delay={0.08 * index}
-                  className="rounded-[28px] border border-brand-gold/10 bg-brand-paper/5 p-5 backdrop-blur"
+                  className="flex min-h-[152px] flex-col rounded-[28px] border border-brand-gold/10 bg-brand-paper/5 p-5 backdrop-blur lg:min-h-[176px] lg:rounded-[32px] lg:p-6 xl:min-h-[188px] xl:p-7"
                 >
-                  <p className="font-serif-display text-3xl text-brand-gold">{item.value}</p>
-                  <p className="mt-3 text-sm text-brand-paper/72">{item.label}</p>
+                  <p className="font-serif-display text-3xl leading-none text-brand-gold lg:text-4xl xl:text-[2.75rem]">{item.value}</p>
+                  <p className="mt-4 max-w-[8ch] text-sm leading-7 text-brand-paper/72 lg:text-base lg:leading-8">{item.label}</p>
                 </Reveal>
               ))}
             </div>
