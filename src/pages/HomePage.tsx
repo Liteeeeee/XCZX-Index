@@ -2,11 +2,13 @@ import { ArrowRight, Leaf, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import bannerHeadquarters from "@/assets/image/indexBanner/仙草甄选总部北京市三元桥天元港中心.png";
+import bannerPromotion from "@/assets/image/indexBanner/仙草甄选线下推广会现场.png";
+import bannerLiveBase from "@/assets/image/indexBanner/仙草甄选天津直播基地.png";
 import { Reveal } from "@/components/common/Reveal";
 import { Seo } from "@/components/common/Seo";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { MainLayout } from "@/components/layout/MainLayout";
-import rootBanneer from "@/assets/image/rootBanneer.png";
 import { HOTLINE_TEL } from "@/config/contact";
 import { ENABLE_JOIN } from "@/config/features";
 import {
@@ -23,10 +25,27 @@ import {
 } from "@/data/websiteApi";
 
 const shouldHydrateFromApi = import.meta.env.MODE !== "test";
+const heroBanners = [
+  {
+    src: bannerHeadquarters,
+    label: "仙草甄选总部北京市三元桥天元港中心",
+  },
+  {
+    src: bannerPromotion,
+    label: "仙草甄选线下推广会现场",
+  },
+  {
+    src: bannerLiveBase,
+    label: "仙草甄选天津直播基地",
+  },
+] as const;
+const HERO_BANNER_INTERVAL = 4000;
 
 export function HomePage() {
   const [featuredNews, setFeaturedNews] = useState(fallbackHomeNews);
   const [featuredProducts, setFeaturedProducts] = useState(fallbackHomeProducts);
+  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+  const [isBannerHovered, setIsBannerHovered] = useState(false);
 
   useEffect(() => {
     if (!shouldHydrateFromApi) {
@@ -56,6 +75,20 @@ export function HomePage() {
       disposed = true;
     };
   }, []);
+
+  useEffect(() => {
+    if (heroBanners.length <= 1 || isBannerHovered) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setCurrentBannerIndex((prev) => (prev + 1) % heroBanners.length);
+    }, HERO_BANNER_INTERVAL);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [isBannerHovered]);
 
   return (
     <MainLayout>
@@ -114,12 +147,36 @@ export function HomePage() {
           <Reveal className="relative">
             <div className="absolute -left-8 top-10 hidden h-24 w-24 rounded-full border border-brand-gold/20 lg:block" />
             <div className="absolute -right-4 bottom-10 hidden h-28 w-28 rounded-full bg-brand-gold/15 blur-3xl lg:block" />
-            <div className="overflow-hidden rounded-[36px] border border-brand-gold/15 bg-brand-paper/5 p-4 shadow-[0_30px_90px_rgba(11,22,14,0.35)] backdrop-blur">
-              <img
-                src={rootBanneer}
-                alt="仙草甄选品牌主视觉"
-                className="h-[520px] w-full rounded-[28px] object-cover"
-              />
+            <div
+              className="overflow-hidden rounded-[36px] border border-brand-gold/15 bg-brand-paper/5 p-4 shadow-[0_30px_90px_rgba(11,22,14,0.35)] backdrop-blur"
+              onMouseEnter={() => setIsBannerHovered(true)}
+              onMouseLeave={() => setIsBannerHovered(false)}
+            >
+              <div className="relative h-[520px] overflow-hidden rounded-[28px] bg-brand-forest/20">
+                {heroBanners.map((banner, index) => (
+                  <img
+                    key={banner.label}
+                    src={banner.src}
+                    alt={banner.label}
+                    className={`absolute inset-0 h-[520px] w-full object-cover transition-all duration-700 ${index === currentBannerIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
+                  />
+                ))}
+                <div className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-forest/85 via-brand-forest/35 to-transparent px-6 py-5 transition-opacity duration-300 ${isBannerHovered ? "opacity-100" : "opacity-0"}`}>
+                  <p className="text-sm tracking-[0.2em] text-brand-gold/85"></p>
+                  <p className="mt-2 text-xl font-medium text-brand-paper">{heroBanners[currentBannerIndex].label}</p>
+                </div>
+              </div>
+              <div className="mt-4 flex items-center justify-center gap-2">
+                {heroBanners.map((banner, index) => (
+                  <button
+                    key={banner.label}
+                    type="button"
+                    aria-label={`切换到${banner.label}`}
+                    onClick={() => setCurrentBannerIndex(index)}
+                    className={`h-2.5 rounded-full transition-all ${index === currentBannerIndex ? "w-8 bg-brand-gold" : "w-2.5 bg-brand-paper/35 hover:bg-brand-paper/55"}`}
+                  />
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
