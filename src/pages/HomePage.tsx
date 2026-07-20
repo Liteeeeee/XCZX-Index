@@ -305,7 +305,7 @@ export function HomePage() {
           {featuredNews[0] ? (
             <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
               <Reveal className="overflow-hidden rounded-[32px] border border-brand-gold/10 bg-white p-4 shadow-[0_16px_40px_rgba(18,34,25,0.06)]">
-                <img src={featuredNews[0].cover} alt={featuredNews[0].title} className="h-[320px] w-full rounded-[26px] object-cover" />
+                <img src={featuredNews[0].cover} alt={featuredNews[0].title} className="block h-auto w-full rounded-[26px]" />
                 <div className="px-2 pb-2 pt-6">
                   <p className="text-xs uppercase tracking-[0.32em] text-brand-gold/75">{featuredNews[0].date}</p>
                   <h3 className="mt-4 font-serif-display text-3xl leading-snug text-brand-ink">{featuredNews[0].title}</h3>
