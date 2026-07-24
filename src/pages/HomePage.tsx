@@ -324,7 +324,13 @@ export function HomePage() {
                     delay={0.08 * index}
                     className="grid gap-4 rounded-[30px] border border-brand-gold/10 bg-white p-4 shadow-[0_14px_36px_rgba(18,34,25,0.05)] sm:grid-cols-[180px_1fr]"
                   >
-                    <img src={item.cover} alt={item.title} className="h-full min-h-[180px] w-full rounded-[22px] object-cover" />
+                    <div className="overflow-hidden rounded-[22px] sm:h-full sm:min-h-[180px]">
+                      <img
+                        src={item.cover}
+                        alt={item.title}
+                        className="block aspect-[16/10] w-full object-cover sm:h-full sm:aspect-auto"
+                      />
+                    </div>
                     <div className="flex flex-col justify-between gap-5">
                       <div>
                         <p className="text-xs uppercase tracking-[0.3em] text-brand-gold/75">{item.date}</p>
